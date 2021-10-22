@@ -1,9 +1,5 @@
-const io = require("socket.io")(8900,{
-    cors:{
-        origin:["https://master.d3tb2mzjm1zl46.amplifyapp.com","http://54.205.19.94"]
-    }
-}) 
-
+const io = require("socket.io")(8900)
+io.set('origins', '*:*');
 // creating a user array 
 
 let users =[]
