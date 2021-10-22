@@ -2,8 +2,10 @@ const express = require("express")
 var app = express();
 var server = app.listen(8900); 
 
-const io = require("socket.io")(server)
- io.set({origin:"*:"})
+const io = require("socket.io")(server,{
+    origin:["https://master.d3tb2mzjm1zl46.amplifyapp.com","http://54.205.19.94","*"]
+})
+ 
 // creating a user array 
 
 let users =[]
