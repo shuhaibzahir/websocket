@@ -1,24 +1,9 @@
-const express = require("express")
+const io = require("socket.io")(8900,{
+    cors:{
+        origin:"http://localhost:3000"
+    }
+}) 
 
-const app = express()
-const http = require("http")
-const server = http.createServer(app);
-
-const cors = require('cors');
-
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-    });
-
-    app.use(cors({
-        origin: '*'
-      }));
-      
-const io = require("socket.io")(server)
 // creating a user array 
 
 let users =[]
@@ -32,7 +17,7 @@ const deleteUser =  (socketId)=>{
     users = users.filter(i=>i.SocketId!==socketId)
 }
 
-
+ 
 const getUser = (userId)=>{
   return users.find(user=>user.userId===userId)
 } 
@@ -74,7 +59,3 @@ io.on("connection", (socket) => {
 
 })
 
-
-
-
-server.listen(8900);
