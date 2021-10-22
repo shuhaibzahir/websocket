@@ -1,5 +1,9 @@
-const io = require("socket.io")(8900)
-io.set('origins', '*:*');
+const express = require("express")
+var app = express();
+var server = app.listen(8900); 
+
+const io = require("socket.io")(server)
+ io.set({origin:"*:"})
 // creating a user array 
 
 let users =[]
