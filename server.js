@@ -1,6 +1,8 @@
 const express = require("express")
 var app = express();
-var server = app.listen(8900); 
+var server = app.listen(8900,()=>{
+    console.log("web socket is running")
+}); 
 
 const io = require("socket.io")(server,{
     origin:["https://master.d3tb2mzjm1zl46.amplifyapp.com","http://54.205.19.94","*","http://localhost:3000"]
